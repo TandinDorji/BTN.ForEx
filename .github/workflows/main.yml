@@ -4,7 +4,8 @@ name: BTN_forex_scraping
 # Controls when the action will run.
 on:
   push:
-    branches: main
+    branches: 
+    - main
 
 
 jobs: 
@@ -23,7 +24,7 @@ jobs:
         R -e 'install.packages("dplyr")'
         R -e 'install.packages("rvest")'
     # Run R script
-    - name: Scrape
+    - name: Run scraper
       run: Rscript BTN.Exchange.Rate.Scraping.R
       
  # Add new files in data folder, commit along with other modified files, push
