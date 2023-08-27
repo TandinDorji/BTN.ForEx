@@ -4,7 +4,7 @@ name: BTN_forex_scraping_3_mins
 # Controls when the action will run.
 on:
   schedule:
-    - cron:  '3 * * * *'
+    - cron:  '10 * * * *'
 
 
 jobs: 
