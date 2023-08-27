@@ -45,8 +45,8 @@ rate <- cbind(rate, Date = format(Sys.Date(), "%Y%m%d"))
 
 # Save data to a CSV file
 # filename <- paste0("C:/Users/Tandin Dorji/OneDrive/Documents/R-Workspace/BTN.ForEx/Rates/", format(Sys.time(), "%Y%m%d"), ".csv")
-filename <- paste0("C:/Users/Tandin Dorji/OneDrive/Documents/R-Workspace/BTN.ForEx/Rates/", format(Sys.time(), "%Y%m%d-%H%M%S"), ".csv")
-
+# filename <- paste0("C:/Users/Tandin Dorji/OneDrive/Documents/R-Workspace/BTN.ForEx/Rates/", format(Sys.time(), "%Y%m%d-%H%M%S"), ".csv")
+filename <- paste0("data/", format(Sys.time(), "%Y%m%d-%H%M%S"), ".csv")
 
 write.csv(rate, filename, row.names = FALSE)
 rm(list=ls())
