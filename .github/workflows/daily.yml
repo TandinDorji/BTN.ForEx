@@ -1,10 +1,10 @@
-# Hourly scraping
-name: BTN_forex_scraping
+# Scraping every 3 minutes
+name: BTN_forex_scraping_3_mins
 
 # Controls when the action will run.
 on:
   schedule:
-    - cron:  '1 * * * *'
+    - cron:  '3 * * * *'
 
 
 jobs: 
