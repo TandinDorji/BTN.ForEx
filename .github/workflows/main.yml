@@ -1,5 +1,5 @@
 # Hourly scraping
-name: BTN forex scraping
+name: BTN_forex_scraping
 
 # Controls when the action will run.
 on:
