@@ -4,7 +4,7 @@ name: daily
 # Controls when the action will run.
 on:
   schedule:
-    - cron:  '15 1 * * *'
+    - cron:  '20 * * * *'
 
 
 jobs: 
