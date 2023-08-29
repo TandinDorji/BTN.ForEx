@@ -2,10 +2,13 @@
 name: daily
 
 # Controls when the action will run.
+#on:
+#  schedule:
+#    - cron:  '20 * * * *'
 on:
-  schedule:
-    - cron:  '20 * * * *'
-
+  push:
+    branches: 
+    - main
 
 jobs: 
   autoscrape:
