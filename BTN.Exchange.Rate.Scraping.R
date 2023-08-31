@@ -47,6 +47,7 @@ rate <- cbind(rate, Date = format(Sys.Date(), "%Y%m%d"))
 # filename <- paste0("C:/Users/Tandin Dorji/OneDrive/Documents/R-Workspace/BTN.ForEx/Rates/", format(Sys.time(), "%Y%m%d"), ".csv")
 # filename <- paste0("C:/Users/Tandin Dorji/OneDrive/Documents/R-Workspace/BTN.ForEx/Rates/", format(Sys.time(), "%Y%m%d-%H%M%S"), ".csv")
 filename <- paste0("data/", format(Sys.time() + 10*60*60, "%Y%m%d-%H%M%S"), ".csv")
+# saving file with time in AEST so that it is easier to read and check cron job success daily around noon AEST
 
 write.csv(rate, filename, row.names = FALSE)
 rm(list=ls())
