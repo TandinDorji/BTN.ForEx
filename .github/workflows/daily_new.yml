@@ -1,5 +1,5 @@
 # Daily scraping
-name: daily
+name: daily_new
 
 # Controls when the action will run.
 on:
