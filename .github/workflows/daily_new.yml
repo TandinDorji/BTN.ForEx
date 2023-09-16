@@ -4,7 +4,7 @@ name: daily_new
 # Controls when the action will run.
 on:
   schedule:
-    - cron:  '10 11 * * *'
+    - cron:  '0 3 * * *'
 #on:
 #  push:
 #    branches: 
