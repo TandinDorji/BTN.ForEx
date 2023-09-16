@@ -3,11 +3,17 @@
 # 12 rates as on 26/08/2023
 
 
+### revised on 16 September, 2023
+# Added code for error handling HTTPS error, when website is down
+# Created new main file (BTN.Exchange ... ) and scrapeBanks_2 files
+# to run in parallel with the older cron job for safety
+
+
 # load libraries, install if not available 
 # if(!require(tidyverse)) install.packages("tidyverse")
 if(!require(rvest)) {
-        install.packages("rvest") 
-        library(rvest)
+    install.packages("rvest") 
+    library(rvest)
 }
 
 
@@ -23,32 +29,23 @@ if(!require(dplyr)) {
 # pass argument (URL)
 # receive value --> df per site
 
-source("scrapeRMA.R")
-source("scrapeBOB.R")
-source("scrapeTBL.R")
+source("scrapeRMA2.R")
+source("scrapeBOB2.R")
+source("scrapeTBL2.R")
 
-rateRMA <- scrapeRMA()
-rateRMA <- cbind(rateRMA, "Src" = "RMA")
-rateBOB <- scrapeBOB()
-rateBOB <- cbind(rateBOB, "Src" = "BOB")
-rateTBL <- scrapeTBL()
-rateTBL <- cbind(rateTBL, "Src" = "TBL")
+rateRMA <- scrapeRMA2()
+rateBOB <- scrapeBOB2()
+rateTBL <- scrapeTBL2()
 
 rate <- rbind(rateRMA, rateBOB, rateTBL)
 rate <- cbind(rate, Date = format(Sys.Date(), "%Y%m%d"))
 # View(rate)
 
-# df1 <- merge(rateBOB, rateTBL, by = "Currency", suffixes = c(".BOB",".TBL"))
-# df2 <- merge(df1, rateRMA, by = "Currency", suffixes = c(".A",".RMA"),
-#              all.x = TRUE)
-# View(df2)
 
-
-# Save data to a CSV file
-# filename <- paste0("C:/Users/Tandin Dorji/OneDrive/Documents/R-Workspace/BTN.ForEx/Rates/", format(Sys.time(), "%Y%m%d"), ".csv")
-# filename <- paste0("C:/Users/Tandin Dorji/OneDrive/Documents/R-Workspace/BTN.ForEx/Rates/", format(Sys.time(), "%Y%m%d-%H%M%S"), ".csv")
-filename <- paste0("data/", format(Sys.time() + 10*60*60, "%Y%m%d-%H%M%S"), ".csv")
+filename <- paste0("data/", format(Sys.time() + 10*60*60, "%Y%m%d-%H%M%S"), "_new.csv")
 # saving file with time in AEST so that it is easier to read and check cron job success daily around noon AEST
+# added_new suffix to differentiate the file scraped with new code with error handling
+# for website error
 
 write.csv(rate, filename, row.names = FALSE)
 rm(list=ls())
