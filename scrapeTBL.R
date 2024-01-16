@@ -31,19 +31,18 @@ scrapeTBL <- function(){
     xr <- data.frame(table_data)
     
     # check table format before renaming columns
-    check1 <- names(xr) == c("Var.1", "TT", "Var.3", "Notes", "Var.5", "Var.6")
+    check1 <- names(xr) == c("Var.1", "TT", "Var.3", "Notes", "Var.5")
     check2 <- unlist(xr[1,], use.names = FALSE) == 
-        c("Currencies", "Buy", "Sell", "Buy", "Sell", 
-          "10% Incentive Scheme Exchange Rate")
+        c("Currencies", "Buy", "Sell", "Buy", "Sell")
     
-    # if table format did not change, sum of checks 1,3 should be 10
+    # if table format did not change, sum of checks 1,3 should be 9
     # else, raise error via log file to trigger code revision
     
-    if(sum(check1, check2) == 11)
+    if(sum(check1, check2) == 9)
     {
         names(xr) <- c("Currency", "TT.Buy", "TT.Sell", 
-                       "Notes.Buy", "Notes.Sell", "Incentive.Rate")
-        xr <- xr[-1, 1:5]
+                       "Notes.Buy", "Notes.Sell")
+        xr <- xr[-1, ]
         rownames(xr) <- NULL
     } else {
         # triggerCodeRevision("TBL")

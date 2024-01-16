@@ -40,8 +40,9 @@ scrapeRMA <- function(){
     
     if(sum(check1, check2) == 10)
     {
-        names(xr) <- c("Currency", "Notes.Buy", "Notes.Sell", 
-                       "TT.Buy", "TT.Sell")
+        xr <- xr[, c(1, 4:5, 2:3)]  # same column order as BOB, TBL
+        names(xr) <- c("Currency", "TT.Buy", "TT.Sell", 
+                       "Notes.Buy", "Notes.Sell")
         xr <- xr[-1, ]
         rownames(xr) <- NULL
     } else {

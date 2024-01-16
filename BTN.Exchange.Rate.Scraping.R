@@ -36,6 +36,7 @@ rateTBL <- cbind(rateTBL, "Src" = "TBL")
 
 rate <- rbind(rateRMA, rateBOB, rateTBL)
 rate <- cbind(rate, Date = format(Sys.Date(), "%Y%m%d"))
+rate <- rate[, c(1, 4:5, 2:3, 6:7)]
 # View(rate)
 
 # df1 <- merge(rateBOB, rateTBL, by = "Currency", suffixes = c(".BOB",".TBL"))
